@@ -3,14 +3,11 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
 urlpatterns = [
     path('', include('generator.urls')),  # Root URL redirects to generator app
     path('admin/', admin.site.urls),
     path('auth/', include('accounts.urls')),  # Authentication URLs
 ]
-
-# Serve media files during development
 if settings.DEBUG or True:  # Always serve media files for now
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
